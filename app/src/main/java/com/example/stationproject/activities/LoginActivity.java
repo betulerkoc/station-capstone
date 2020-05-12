@@ -1,5 +1,7 @@
-package com.example.stationproject;
+package com.example.stationproject.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.stationproject.R;
+import com.example.stationproject.database.SQLiteHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
     SQLiteOpenHelper openHelper;
@@ -17,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton, goRegisterButton;
     EditText useremail, userPassword;
     Cursor cursor;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+
+        goRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RegisterActvity.class);
+                startActivity(intent);
             }
         });
 
